@@ -11,6 +11,8 @@ class Person extends Model
     /** @use HasFactory<\Database\Factories\PersonFactory> */
     use HasFactory;
 
+    protected $table = 'persons';
+
     /**
      * @var list<string>
      */

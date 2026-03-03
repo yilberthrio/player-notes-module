@@ -37,10 +37,7 @@ class PermissionSeeder extends Seeder
         }
 
         if ($player) {
-            $player->syncPermissions([
-                'players.view',
-                'player-notes.view',
-            ]);
+            $player->syncPermissions([]);
         }
 
         if ($consultor) {

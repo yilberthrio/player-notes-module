@@ -13,6 +13,11 @@
                 <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
+                @can('players.view')
+                    <flux:navbar.item icon="layout-grid" :href="route('players.index')" :current="request()->routeIs('players.*')" wire:navigate>
+                        {{ __('Players') }}
+                    </flux:navbar.item>
+                @endcan
             </flux:navbar>
 
             <flux:spacer />
@@ -56,6 +61,11 @@
                     <flux:sidebar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard')  }}
                     </flux:sidebar.item>
+                    @can('players.view')
+                        <flux:sidebar.item icon="layout-grid" :href="route('players.index')" :current="request()->routeIs('players.*')" wire:navigate>
+                            {{ __('Players')  }}
+                        </flux:sidebar.item>
+                    @endcan
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

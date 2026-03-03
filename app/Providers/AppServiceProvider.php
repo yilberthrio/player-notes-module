@@ -2,9 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\PlayerNote;
+use App\Policies\PlayerNotePolicy;
+use App\Repositories\Contracts\PlayerNoteRepositoryInterface;
+use App\Repositories\Contracts\PlayerRepositoryInterface;
+use App\Repositories\Eloquent\EloquentPlayerNoteRepository;
+use App\Repositories\Eloquent\EloquentPlayerRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 
@@ -15,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(PlayerRepositoryInterface::class, EloquentPlayerRepository::class);
+        $this->app->bind(PlayerNoteRepositoryInterface::class, EloquentPlayerNoteRepository::class);
     }
 
     /**
@@ -23,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::policy(PlayerNote::class, PlayerNotePolicy::class);
+
         $this->configureDefaults();
     }
 

@@ -35,6 +35,7 @@ Aplicación Laravel 12 + Livewire para gestionar jugadores y sus notas internas,
 - Composer
 - Node.js 20+ y npm
 - Motor de base de datos (SQLite o MySQL)
+- Extensión PHP `pdo_sqlite` para pruebas automáticas sin depender de MySQL local
 
 ## 5. Puesta en marcha (local)
 
@@ -156,7 +157,21 @@ Ejecutar pruebas:
 php artisan test
 ```
 
-## 9. Estructura del proyecto (resumen)
+La suite está configurada para correr con SQLite en memoria (`:memory:`), sin requerir MySQL local.
+
+## 9. Checklist de pre-entrega
+
+- `php artisan migrate:fresh --seed` ejecuta sin errores.
+- Login funcional con usuario semilla.
+- Redirección de `/` validada:
+  - sin sesión -> `/login`
+  - con sesión -> `/dashboard`
+- Ruta `/register` deshabilitada.
+- `php artisan test` en verde.
+- No hay credenciales sensibles en archivos versionados.
+- README actualizado.
+
+## 10. Estructura del proyecto (resumen)
 
 - `app/Livewire/Players` -> componentes de lista y notas.
 - `app/Services` -> lógica de aplicación.
@@ -167,7 +182,7 @@ php artisan test
 - `resources/views` -> vistas Blade/Livewire.
 - `routes/web.php` -> rutas web de la app.
 
-## 10. Notas para desarrollo
+## 11. Notas para desarrollo
 
 - El seeder `PlayerNoteSeeder` existe pero actualmente no inserta registros.
 - Si cambias permisos o roles, ejecuta de nuevo seeders para alinear datos:

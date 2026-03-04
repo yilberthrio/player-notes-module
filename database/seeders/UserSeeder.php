@@ -72,7 +72,7 @@ class UserSeeder extends Seeder
             [
                 'id' => 5,
                 'person_id' => 5,
-                'name' => 'player5',
+                'name' => 'consultor',
                 'email' => 'yilberth5@gmail.com',
                 'email_verified_at' => null,
                 'password' => $defaultPassword,

@@ -127,7 +127,7 @@ Todos los usuarios seed tienen contraseña inicial:
 | 2 | `admin2` | `yilberth2@gmail.com` | admin |
 | 3 | `player3` | `yilberth3@gmail.com` | player |
 | 4 | `player4` | `yilberth4@gmail.com` | player |
-| 5 | `player5` | `yilberth5@gmail.com` | consultor |
+| 5 | `consultor` | `yilberth5@gmail.com` | consultor |
 
 ## 7. Rutas principales
 
